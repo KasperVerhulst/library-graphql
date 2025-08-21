@@ -1,0 +1,64 @@
+directive @specifiedBy(url: String!) on SCALAR
+
+scalar Date
+  @specifiedBy(url:
+    "https://tools.ietf.org/html/rfc3339"
+  )
+
+type Query {
+    books: [Book]
+    booksByGenre(genre: Genre!): [Book]
+    booksByAuthorName(firstName: String, lastName: String!): [Book]
+
+    authors: [Author]
+}
+
+
+type Mutation {
+    enrollMember(newMember: MemberInput): Member
+}
+
+input MemberInput {
+    firstName: String!
+    lastName: String!
+    birthDate: Date
+}
+
+enum Genre {
+    THRILLER,
+    FICTION,
+    NON_FICTION,
+    BIBLIOGRAPHY
+}
+
+interface Person {
+    id: ID!
+    firstName: String
+    lastName: String!
+}
+
+type Member implements Person {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    startDate: Date
+    birthDate: Date
+}
+
+type Author implements Person {
+    id: ID!
+    firstName: String
+    lastName: String!
+    books: [Book]
+}
+
+type Book {
+    id: ID!
+    title: String!
+    genre: Genre!
+    pageCount: Int!
+    author: Author!
+}
+
+
+

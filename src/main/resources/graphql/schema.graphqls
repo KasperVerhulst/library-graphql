@@ -11,6 +11,8 @@ type Query {
     booksByAuthorName(firstName: String, lastName: String!): [Book]
 
     authors: [Author]
+
+    members: [Member]
 }
 
 
@@ -41,7 +43,7 @@ type Member implements Person {
     id: ID!
     firstName: String!
     lastName: String!
-    startDate: Date
+    joinDate: Date
     birthDate: Date
 }
 

@@ -30,4 +30,5 @@ public class MemberController {
                 .birthDate(memberInput.birthDate()).build();
         return memberRepository.save(member);
     }
+
 }

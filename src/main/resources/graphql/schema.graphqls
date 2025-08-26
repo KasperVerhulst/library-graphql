@@ -18,6 +18,7 @@ type Query {
 
 type Mutation {
     enrollMember(newMember: MemberInput): Member
+    loanBook(bookIDs: [ID!]!, memberID: ID!): Loan
 }
 
 input MemberInput {
@@ -63,5 +64,12 @@ type Book {
     author: Author!
 }
 
+type Loan {
+    id: ID!
+    member: Member!
+    books: [Book!]!
+    startDate: Date
+    endDate: Date
+}
 
 

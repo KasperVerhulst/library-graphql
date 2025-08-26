@@ -38,6 +38,9 @@ public class Member {
     @Column(updatable = false)
     private LocalDate joinDate;
 
+    @OneToMany(mappedBy = "member")
+    private Set<Loan> loans;
+
     @Transient
     private int age;
 

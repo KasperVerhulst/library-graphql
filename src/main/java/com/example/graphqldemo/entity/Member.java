@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.Period;
+import java.util.Set;
 
 @Builder
 @NoArgsConstructor
@@ -36,4 +37,12 @@ public class Member {
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDate joinDate;
+
+    @Transient
+    private int age;
+
+    public int getAge() {
+        return Period.between(birthDate, LocalDate.now()).getYears();
+    }
+
 }

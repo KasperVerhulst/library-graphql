@@ -45,6 +45,7 @@ type Member implements Person {
     lastName: String!
     joinDate: Date
     birthDate: Date
+    age: Int
 }
 
 type Author implements Person {
